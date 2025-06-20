@@ -1,0 +1,61 @@
+#salon-booking-form-wrapper {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 25px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#salon-booking-form .form-row {
+    margin-bottom: 20px;
+}
+
+#salon-booking-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+#salon-booking-form input[type="text"],
+#salon-booking-form input[type="email"],
+#salon-booking-form input[type="tel"],
+#salon-booking-form input[type="date"],
+#salon-booking-form input[type="time"],
+#salon-booking-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Important */
+    transition: border-color 0.3s;
+}
+
+#salon-booking-form input:focus,
+#salon-booking-form select:focus {
+    border-color: #0073aa;
+    outline: none;
+}
+
+#salon-booking-form .required {
+    color: red;
+}
+
+#salon-booking-form input[type="submit"] {
+    width: 100%;
+    background-color: #0073aa;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+#salon-booking-form input[type="submit"]:hover {
+    background-color: #005a87;
+}
