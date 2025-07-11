@@ -10,6 +10,7 @@ function sbp_handle_form_submission()
 {
     // Check if the form was submitted and the nonce is valid for security
     // if (isset($_POST['sbp_submit_booking']) && wp_verify_nonce($_POST['sbp_booking_nonce'], 'sbp_booking_action')) {
+    // if (isset($_POST['sbp_submit_booking'], $_POST['sbp_booking_nonce']) && wp_verify_nonce($_POST['sbp_booking_nonce'], 'sbp_booking_action')) {
     if (isset($_POST['sbp_submit_booking'], $_POST['sbp_booking_nonce']) && wp_verify_nonce($_POST['sbp_booking_nonce'], 'sbp_booking_action')) {
 
         // Sanitize all form data to prevent security issues
@@ -43,10 +44,14 @@ function sbp_handle_form_submission()
             update_post_meta($post_id, '_booking_date', $date);
             update_post_meta($post_id, '_booking_time', $time);
 
+            // Debug log
+            error_log('New appointment created: ' . $post_id);
             // Redirect the user to a 'Thank You' page
             $redirect_url = home_url('/thank-you'); // Make sure you create a page with this slug
             wp_redirect($redirect_url);
             exit;
+        } else {
+            error_log('Failed to create new appointment.');
         }
     }
 }
@@ -66,7 +71,10 @@ function sbp_booking_form_shortcode()
 ?>
     <div id="salon-booking-form-wrapper">
         <form id="salon-booking-form" method="POST" action="">
-            <?php wp_nonce_field('salon-booking-form', 'salon-booking-form-nonce'); ?>
+            <?php
+            // wp_nonce_field('salon-booking-form', 'salon-booking-form-nonce');
+            wp_nonce_field('sbp_booking_action', 'sbp_booking_nonce');
+            ?>
             <div class="form-row">
                 <label for="customer_name">Your Name <span class="required">*</span></label>
                 <input type="text" id="customer_name" name="customer_name" required>
@@ -106,12 +114,19 @@ function sbp_booking_form_shortcode()
 
             <div class="form-row">
                 <input type="submit" name="sbp_submit_booking" value="Book Appointment">
+                <input type="hidden" name="sbp_booking_form_submitted" value="1">
+
             </div>
 
         </form>
     </div>
 <?php
     return ob_get_clean();
+    if ($post_id) {
+        error_log('Appointment created with ID: ' . $post_id);
+    } else {
+        error_log('Appointment creation failed!');
+    }
 }
 
 add_shortcode('salon_booking_form', 'sbp_booking_form_shortcode');

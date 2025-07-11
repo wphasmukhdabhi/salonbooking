@@ -31,6 +31,7 @@ require_once SBP_PLUGIN_PATH . 'includes/deactivation.php';
 require_once SBP_PLUGIN_PATH . 'includes/post-types.php';
 require_once SBP_PLUGIN_PATH . 'includes/shortcodes.php';
 require_once SBP_PLUGIN_PATH . 'includes/admin-columns.php';
+// require_once SBP_PLUGIN_PATH . 'includes/meta-boxes.php';
 
 // Register activation and deactivation hooks
 register_activation_hook(__FILE__, 'sbp_activate_plugin');
