@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name: Salon Booking
- * Description: A custom plugin for booking salon appointments
+ * Description: A plugin for booking salon appointments
  * Version: 1.0
  * Author: Hasmukh Dabhi
  */
