@@ -5,14 +5,6 @@
  * Description: A custom plugin for booking salon appointments
  * Version: 1.0
  * Author: Hasmukh Dabhi
- * Author URI: https://yourwebsite.com
- * Text Domain: salon-booking
- * Domain Path: /languages
- * License: GPL2
- * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
- * Requires at least: 5.0
- * Requires PHP: 7.0
- * 
  */
 
 if (! defined('WPINC')) {
